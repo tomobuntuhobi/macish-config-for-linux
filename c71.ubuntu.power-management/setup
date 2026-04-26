@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# run with sudo !!
+
+# replace wlan0 with wireless interface id shown with `ip link show`
+
+cp n11.udev-disable-usb-powermanagement /etc/udev/rules.d/50-usb-power-management.rules
+
+cp n22.network-manager-wifi-powersave /etc/NetworkManager/conf.d/wifi-powersave.conf
+
+systemctl restart NetworkManager
+
+cp n55.iwconfig /etc/systemd/system/wifi-power-save-off.service
+
+systemctl enable wifi-power-save-off.service
+
+systemctl start wifi-power-save-off.service
