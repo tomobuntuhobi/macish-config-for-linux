@@ -1,0 +1,13 @@
+
+[Unit]
+Description=Disable WiFi Power Save
+After=network.target
+
+[Service]
+Type=oneshot
+# iwconfig often returns "Operation not supported" on nl80211; use iw (apt install iw).
+ExecStart=/usr/sbin/iw dev wlx588694f5c97d set power_save off
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

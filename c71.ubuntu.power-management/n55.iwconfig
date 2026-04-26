@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/sbin/iwconfig wlan0 power off
+ExecStart=/sbin/iwconfig wlx588694f5c97d power off
 RemainAfterExit=yes
 
 [Install]

@@ -3,6 +3,13 @@
 # run with sudo !!
 
 # replace wlan0 with wireless interface id shown with `ip link show`
+# you should use wlx588... if output is like this:
+# 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+#    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+# 2: enp2s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc fq_codel state DOWN mode DEFAULT group default qlen 1000
+#    link/ether 74:27:ea:d6:b7:b0 brd ff:ff:ff:ff:ff:ff
+# 3: wlx588694f5c97d: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000
+#    link/ether 58:86:94:f5:c9:7d brd ff:ff:ff:ff:ff:ff
 
 cp n11.udev-disable-usb-powermanagement /etc/udev/rules.d/50-usb-power-management.rules
 
@@ -10,8 +17,12 @@ cp n22.network-manager-wifi-powersave /etc/NetworkManager/conf.d/wifi-powersave.
 
 systemctl restart NetworkManager
 
-cp n55.iwconfig /etc/systemd/system/wifi-power-save-off.service
+
+# run below if you use iwconfig
+# cp n55.iwconfig /etc/systemd/system/wifi-power-save-off.service
+# wifi-power-save-off uses `iw`, not iwconfig (iwconfig fails on many drivers).
+# If needed: apt install iw, then run below instead of above
+# cp n55.iw /etc/systemd/system/wifi-power-save-off.service
 
 systemctl enable wifi-power-save-off.service
-
 systemctl start wifi-power-save-off.service
