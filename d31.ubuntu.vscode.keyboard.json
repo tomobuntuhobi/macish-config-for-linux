@@ -287,5 +287,42 @@
 	{
 		"key": "ctrl+shift+w",
 		"command": "-workbench.action.closeWindow"
+	},
+
+
+	{
+		"key": "ctrl+backspace",
+		"command": "-chatEditing.discardAllFiles",
+		"when": "hasUndecidedChatEditingResource && inChatInput && !chatInputHasText && !chatSessionRequestInProgress"
+	},
+	{
+		"key": "ctrl+backspace",
+		"command": "-deleteWordLeft",
+		"when": "textInputFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+backspace",
+		"command": "-cursorai.action.rejectGenerateInTerminal",
+		"when": "terminalFocus && terminalHasBeenCreated || terminalProcessSupported && @terminal.canRejectGeneration"
+	},
+	{
+		"key": "ctrl+backspace",
+		"command": "-cursorai.action.cancelGenerateInTerminal",
+		"when": "terminalFocus && terminalHasBeenCreated || terminalProcessSupported && @terminal.canCancelGeneration"
+	},
+	{
+		"key": "ctrl+backspace",
+		"command": "-workbench.action.terminal.sendSequence",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "ctrl+backspace",
+		"command": "deleteFile",
+		"when": "filesExplorerFocus && foldersViewVisible && !inputFocus"
+	},
+	{
+		"key": "shift+delete",
+		"command": "-deleteFile",
+		"when": "filesExplorerFocus && foldersViewVisible && !inputFocus"
 	}
 ]
