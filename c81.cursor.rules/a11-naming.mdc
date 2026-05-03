@@ -1,0 +1,9 @@
+---
+description: always mind a11 naming convention when naming files or folders
+alwaysApply: true
+---
+
+# Use a11 naming convention
+- files are prefixed with /[a-z][0-9][0-9]\./ for ordering
+- files that alphabetically precede others are purer
+- usually later files will depend on earlier files not the other way around

@@ -1,0 +1,23 @@
+---
+description: Keep files under 300 lines; split and refactor when they grow larger
+alwaysApply: true
+---
+
+# File Size Limit (300 Lines)
+
+- Prefer files under **300 lines**. When a file exceeds this, split or refactor it.
+- Proactively suggest splitting when editing files that are already long or will grow past 300 lines.
+
+## How to Split
+
+1. **Extract components** – Move React/UI components into their own files (e.g. `d50.ComponentName.tsx`).
+2. **Extract hooks** – Move custom hooks into `use*.ts` or `use*.tsx` files.
+3. **Extract utilities** – Move pure functions, helpers, and constants into `*.utils.ts` or `*.constants.ts`.
+4. **Extract types** – Move shared types/interfaces into `*.types.ts` or a dedicated types module.
+5. **Split by feature** – Break large modules into smaller feature-focused modules in subfolders.
+
+## When to Apply
+
+- **New code**: Structure new features so each file stays under 300 lines.
+- **Existing code**: When editing a file over 300 lines, refactor and split as part of the change.
+- **Exceptions**: Skip splitting when it would hurt clarity (e.g. tightly coupled logic, small cohesive modules) or when the user explicitly prefers a single file.
